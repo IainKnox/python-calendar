@@ -91,10 +91,10 @@ def start_calendar():
                 print('Your calendar is empty')
             else:
                 event = input('Which event would you like to delete? ')
-                for date in calendar.items():
+                for date in calendar.keys():
                     if event == calendar[date]:
                         # search through the events and see if it exists
-                        del(calendar[date])
+                        del calendar[date]
                         print('Your event was successfully deleted')
                         print(calendar)
                     else:
