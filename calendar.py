@@ -60,3 +60,42 @@ def start_calendar():
             calendar[date] = update  # adds the update to the specified date
             print('Calendar updated successfully.')
             print(calendar)  # to display the update
+        elif user_choice == 'A':  # add an event to calendar
+            event = input('Enter an event: ')
+            # allow the user to enter a string as an event
+            date = input('Enter the date (MM/DD/YYYY): ')
+            # get the user to enter the date in a specified format
+            if (len(date) > 10 or int(date[6:]) < int(strftime('%Y'))):
+                # check that the date is the 10 characters long or
+                # that the year is 4 characters.
+                print('That date entry is invalid.')
+                sleep(1)  # give a pause for user to think about the entry
+                try_again = input('Would you like to try again? (Y/N): ')
+                # give the user option to reinput the date
+                try_again = try_again.upper()
+                # covert input to uppercase for checking
+                if try_again == 'Y':
+                    continue
+                    # restart the loop allowing user to try again
+                else:
+                    start = False
+                    # change start to False will terminate the calender
+            else:
+                calendar[date] = event
+                # add the event to the calendar
+                print('Your event was successfully added to the calendar')
+        elif user_choice == 'D':  # delete an event from the calendar
+            if len(calendar.keys()) < 1:
+                # check if there are existing entries by checking
+                # that the length of the array is greater than 1
+                print('Your calendar is empty')
+            else:
+                event = input('Which event would you like to delete? ')
+                for date in calendar.items():
+                    if event == calendar[date]:
+                        # search through the events and see if it exists
+                        del(calendar[date])
+                        print('Your event was successfully deleted')
+                        print(calendar)
+                    else:
+                        print('No such event exists.')
