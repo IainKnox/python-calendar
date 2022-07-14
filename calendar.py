@@ -99,3 +99,14 @@ def start_calendar():
                         print(calendar)
                     else:
                         print('No such event exists.')
+        elif user_choice == 'X':  # exit the calendar
+            start = False   # change the bool to close the app
+            print('Closing the calendar...')
+            sleep(1)
+        else:
+            print('That was not a valid command')
+            # if any other key is pressed it closes the app
+            start = False
+
+
+start_calendar()
